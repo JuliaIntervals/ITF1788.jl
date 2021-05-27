@@ -34,8 +34,8 @@ this will become
 ```
 
 if the test is successful and
-```
-@test_broken +(interval(1.0, 2.0), interval(1.0, 2.0)) == Interval(2.0, 4.0)
+```julia
+@test_skip +(interval(1.0, 2.0), interval(1.0, 2.0)) == Interval(2.0, 4.0)
 ```
 
 if the test is unsuccessful.
@@ -46,11 +46,17 @@ If you do not want to actually run the test and mark the broken tests, you can r
 By default, all test files are created into a folder `test_ITF1788` in your current directory. You can change the output directory with the
 keyword `output`, e.g. `generate(; output="mydirectory")`.
 
-The function will also create a `run_ITF1788.jl` which includes all the tests files.
+The function will also create a `run_ITF1788.jl` which includes all the tests files, i.e. all you have to do to test `IntervalArithmetic.jl` against this test suite is
+
+```julia
+include("test_ITF1788/run_ITF1788.jl")
+```
 
 # Note
 
-Tests for reverse functions are missing, but coming soon...
+- According to the standard, some functions are required to also signal a warning in some situations (e.g. invalid input), the testsuite also checks that warning are returned. However, if the function does not return a warning (and IntervalArithmetic does not at the moment) then the test will error and testing will stop. If you do not want to test that warnings are printed, you can do `generate(; test_warn=false)`.
+
+- Tests for reverse functions are missing, but coming soon...
 
 ## Author
 

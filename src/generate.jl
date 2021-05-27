@@ -8,7 +8,7 @@ name of filename. The folder where to save the output file is specifified
 If failure=true, than each test is also executed before printing to the target file. If the
 test fails, then the test is generated as ´@test_broken`.
 """
-function generate(filename; failure=true, output="test_ITF1788")
+function generate(filename; failure=true, test_warn=true, output="test_ITF1788")
 
     # read file
     src = joinpath(@__DIR__, "itl", filename)
@@ -31,7 +31,7 @@ function generate(filename; failure=true, output="test_ITF1788")
     length(block_start) == length(block_end) || throw(ArgumentError("opening and closing braces not not much in $filename"))
 
     for (bstart, bend) in zip(block_start, block_end)
-        testset = parse_block(lines[bstart:bend]; failure=failure)
+        testset = parse_block(lines[bstart:bend]; failure=failure, test_warn=test_warn)
         write(f, testset)
     end
 
@@ -39,7 +39,7 @@ function generate(filename; failure=true, output="test_ITF1788")
     nothing
 end
 
-function generate(; failure=true, output="test_ITF1788")
+function generate(; failure=true, test_warn=true, output="test_ITF1788")
 
     files = ("atan2.itl",
             "c-xsc.itl",
@@ -58,7 +58,7 @@ function generate(; failure=true, output="test_ITF1788")
             "mpfi.itl",
     )
     for file in files
-        generate(file; failure=failure, output=output)
+        generate(file; failure=failure, test_warn=test_warn, output=output)
     end
 
     f = open(joinpath(output, "run_ITF1788.jl"); write=true)

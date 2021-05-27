@@ -1,4 +1,4 @@
-function parse_block(block; failure=true)
+function parse_block(block; failure=true, test_warn=true)
 
     bname = match(r"^\s*testcase\s+(\S+)\s+\{\s*$", block[1])[1]
 
@@ -8,7 +8,7 @@ function parse_block(block; failure=true)
     for i in 2:length(block)-1
         line = strip(block[i])
         (isempty(line) || startswith(line, "//")) && continue
-        command = parse_command(line; failure=failure)
+        command = parse_command(line; failure=failure, test_warn=test_warn)
         testset = """$testset
         $ind$command
         """
@@ -32,7 +32,7 @@ is parsed into
 @test +(Interval(1, 2), Interval(1, 2)) == Interval(2, 4)
 ```
 """
-function parse_command(line; failure=true)
+function parse_command(line; failure=true, test_warn=true)
     # extract parts in line
     m = match(r"^(.+)=(.+);$", line)
     lhs = m[1]
@@ -48,14 +48,16 @@ function parse_command(line; failure=true)
     if failure
         try
             res = eval(Meta.parse(expr))
-            command = res ? "@test $expr" : "@test_broken $expr"
+            command = res ? "@test $expr" : "@test_skip $expr"
         catch
-            command = "@test_broken $expr"
+            command = "@test_skip $expr"
         end
     else
         command = "@test $expr"
     end
-    command = isempty(warn) ? command : "@test_logs (:warn, ) $command"
+    if test_warn
+        command = isempty(warn) ? command : "@test_logs (:warn, ) $command"
+    end
     return command
 end
 
