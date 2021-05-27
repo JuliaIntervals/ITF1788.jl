@@ -1,7 +1,7 @@
 # ITF1788
 
-[![Build Status](https://github.com/lucaferranti/ITF1788.jl/workflows/CI/badge.svg)](https://github.com/lucaferranti/ITF1788.jl/actions)
-[![Coverage](https://codecov.io/gh/lucaferranti/ITF1788.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/lucaferranti/ITF1788.jl)
+[![Build Status](https://github.com/juliaintervals/ITF1788.jl/workflows/CI/badge.svg)](https://github.com/juliaintervals/ITF1788.jl/actions)
+[![Coverage](https://codecov.io/gh/juliaintervals/ITF1788.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/juliaintervals/ITF1788.jl)
 
 This package is a parser of the Interval Tests Libraries (ITL) testsuite, created by Oliver Heimlich and available [here](https://github.com/oheim/ITF1788). The tests are to verify whether an interval arithmetic implementation is complying to the IEEE 1788-2015 standard for interval arithmetic. This package converts the test suite to tests in Julia, which can be used to test [IntervalArithmetic.jl](https://github.com/juliaintervals/intervalarithmetic.jl)
 
