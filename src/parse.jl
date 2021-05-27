@@ -66,7 +66,7 @@ function parse_lhs(lhs)
     args = m[2]
 
     #special case, input text
-    fname == "b-textToInterval" && return "I$args"
+    fname == "b-textToInterval" && return "@interval($args)"
     fname == "d-textToInterval" && return "@decorated($args)"
 
     # input numbers

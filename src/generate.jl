@@ -62,8 +62,14 @@ function generate(; failure=true, output="test_ITF1788")
     end
 
     f = open(joinpath(output, "run_ITF1788.jl"); write=true)
+    write(f, """
+    sqr(x) = x^2
+    sum_sqr(x) = sum(x.^2)
+    sum_abs(x) = sum(abs.(x))
+
+    """)
     for file in files
-        write(f, "include($(file[1:end-4]).jl)\n")
+        write(f, """include("$(file[1:end-4]).jl")\n""")
     end
     close(f)
 end
