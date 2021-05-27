@@ -1,0 +1,6 @@
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+/Manifest.toml
+sandbox.jl
+test_ITF1788/*

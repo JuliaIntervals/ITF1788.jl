@@ -1,0 +1,18 @@
+name = "ITF1788"
+uuid = "ef7b9e60-fb5a-4565-8867-0fa892423078"
+authors = ["Luca Ferranti"]
+version = "0.1.0"
+
+[deps]
+IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
+IntervalContractors = "15111844-de3b-5229-b4ba-526f2f385dc9"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
