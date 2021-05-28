@@ -56,18 +56,16 @@ function generate(; failure=true, test_warn=true, output="test_ITF1788")
             "libieeep1788_reduction.itl",
             "libieeep1788_set.itl",
             "mpfi.itl",
+            "abs_rev.itl",
+            "libieeep1788_rev.itl",
+            "libieeep1788_mul_rev.itl",
+            "pow_rev.itl"
     )
     for file in files
         generate(file; failure=failure, test_warn=test_warn, output=output)
     end
 
     f = open(joinpath(output, "run_ITF1788.jl"); write=true)
-    write(f, """
-    sqr(x) = x^2
-    sum_sqr(x) = sum(x.^2)
-    sum_abs(x) = sum(abs.(x))
-
-    """)
     for file in files
         write(f, """include("$(file[1:end-4]).jl")\n""")
     end

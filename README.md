@@ -56,8 +56,6 @@ include("test_ITF1788/run_ITF1788.jl")
 
 - According to the standard, some functions are required to also signal a warning in some situations (e.g. invalid input), the testsuite also checks that warning are returned. However, if the function does not return a warning (and IntervalArithmetic does not at the moment) then the test will error and testing will stop. If you do not want to test that warnings are printed, you can do `generate(; test_warn=false)`.
 
-- Tests for reverse functions are missing, but coming soon...
-
 ## Author
 
 - [Luca Ferranti](https://github.com/lucaferranti)

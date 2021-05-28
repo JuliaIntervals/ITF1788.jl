@@ -93,7 +93,7 @@ function parse_lhs(lhs)
     args = replace(args, ",," => ",")
     args = replace(args, "{" => "[")
     args = replace(args, "}" => "]")
-    return "$(functions[fname])($args)"
+    return functions[fname](args)
 
 end
 
