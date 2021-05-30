@@ -29,7 +29,7 @@ add [1, 2] [1, 2] = [2, 4]
 
 is parsed into
 ```
-@test +(Interval(1, 2), Interval(1, 2)) == Interval(2, 4)
+@test +(Interval(1, 2), Interval(1, 2)) === Interval(2, 4)
 ```
 """
 function parse_command(line; failure=true, test_warn=true)
@@ -127,7 +127,7 @@ end
 function build_expression(lhs, rhs::AbstractString)
     rhs == "nai()" && return "isnai($lhs)"
     rhs == "NaN" && return "isnan($lhs)"
-    return "$lhs == $rhs"
+    return "$lhs === $rhs"
 end
 
 function build_expression(lhs, rhs::Vector)

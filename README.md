@@ -30,12 +30,12 @@ add [1.0, 2.0] [1.0, 2.0] = [2.0, 4.0]
 
 this will become
 ```julia
-@test +(interval(1.0, 2.0), interval(1.0, 2.0)) == Interval(2.0, 4.0)
+@test +(interval(1.0, 2.0), interval(1.0, 2.0)) === Interval(2.0, 4.0)
 ```
 
 if the test is successful and
 ```julia
-@test_skip +(interval(1.0, 2.0), interval(1.0, 2.0)) == Interval(2.0, 4.0)
+@test_skip +(interval(1.0, 2.0), interval(1.0, 2.0)) === Interval(2.0, 4.0)
 ```
 
 if the test is unsuccessful.
