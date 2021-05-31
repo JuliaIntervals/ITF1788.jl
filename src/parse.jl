@@ -127,7 +127,8 @@ end
 function build_expression(lhs, rhs::AbstractString)
     rhs == "nai()" && return "isnai($lhs)"
     rhs == "NaN" && return "isnan($lhs)"
-    return "$lhs === $rhs"
+    startswith(rhs, "DecoratedInterval") && return "$lhs == $rhs && decoration($lhs) == decoration($rhs)"
+    return "$lhs == $rhs"
 end
 
 function build_expression(lhs, rhs::Vector)
