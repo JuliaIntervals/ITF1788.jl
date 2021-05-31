@@ -10,7 +10,7 @@ This package is a parser of the Interval Tests Libraries (ITL) testsuite, create
 Install and import the package with 
 
 ```julia
-julia> using Pkg; Pkg.add("ITF1788") # only once to install
+julia> using Pkg; Pkg.add("https://github.com/JuliaIntervals/ITF1788.jl.git") # only once to install
 julia> using ITF1788
 ```
 
