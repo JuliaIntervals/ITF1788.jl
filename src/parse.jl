@@ -48,9 +48,9 @@ function parse_command(line; failure=true, test_warn=true)
     if failure
         try
             res = eval(Meta.parse(expr))
-            command = res ? "@test $expr" : "@test_skip $expr"
+            command = res ? "@test $expr" : "@test_broken $expr"
         catch
-            command = "@test_skip $expr"
+            command = "@test_broken $expr"
         end
     else
         command = "@test $expr"
@@ -97,12 +97,19 @@ function parse_lhs(lhs)
 
 end
 
+function int_to_float(x)
+    if isnothing(tryparse(Int, x))
+        return x
+    else
+        return x*".0"
+    end
+end
 function parse_rhs(rhs)
     rhs = strip(rhs)
     rhs = replace(rhs, "infinity" => "Inf")
     rhs = replace(rhs, "X" => "x")
     if '[' ∉ rhs # one or more scalar/bolean values separated by space
-        return split(rhs)
+        return map(int_to_float, split(rhs))
     else # one or more intervals
         rx = r"\[([^\]]+)\](?:_(\w+))?"
         ivals = [parse_interval(m[1], m[2]; check=false) for m in eachmatch(rx, rhs)]

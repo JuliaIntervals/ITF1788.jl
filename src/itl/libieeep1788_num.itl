@@ -165,7 +165,7 @@ testcase minimal_mid_rad_test {
 
 testcase minimal_mid_rad_dec_test {
     midRad [empty] = NaN NaN;
-    midRad [nai] [nai] = NaN NaN;
+    midRad [nai] = NaN NaN;
     midRad [-infinity,infinity]_def = 0.0 infinity;
     midRad [-0X1.FFFFFFFFFFFFFP+1023,0X1.FFFFFFFFFFFFFP+1023]_trv = 0.0 0X1.FFFFFFFFFFFFFP+1023;
     midRad [0.0,2.0]_com = 1.0 1.0;

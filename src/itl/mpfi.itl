@@ -600,7 +600,7 @@ testcase mpfi_diam_abs {
     wid [entire] = +infinity;
     wid [-infinity, 0.0] = +infinity;
     wid [-8.0, 0.0] = +8;
-    wid [0.0, 0.0] = -0;
+    wid [0.0, 0.0] = 0;
     wid [0.0, 5.0] = +5;
     wid [0.0, +infinity] = +infinity;
 

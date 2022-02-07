@@ -5,7 +5,7 @@ using Test
 
     # simple 1 output commands
     @test parse_command("add [10.0, 20.0] [13.0, 17.0] = [23.0, 37.0];") == "@test +(interval(10.0, 20.0), interval(13.0, 17.0)) === Interval(23.0, 37.0)"
-    @test parse_command("add [10.0, 20.0] [13.0, 17.0] = [23.0, 38.0];") == "@test_skip +(interval(10.0, 20.0), interval(13.0, 17.0)) === Interval(23.0, 38.0)"
+    @test parse_command("add [10.0, 20.0] [13.0, 17.0] = [23.0, 38.0];") == "@test_broken +(interval(10.0, 20.0), interval(13.0, 17.0)) === Interval(23.0, 38.0)"
     @test parse_command("add [10.0, 20.0] [13.0, 17.0] = [23.0, 38.0];"; failure=false) == "@test +(interval(10.0, 20.0), interval(13.0, 17.0)) === Interval(23.0, 38.0)"
 
 
