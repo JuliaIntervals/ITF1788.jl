@@ -606,7 +606,7 @@ testcase minimal.powRev2_test {
 	powRev2 [0.25, 0.5] [1.0, infinity] [entire] = [-infinity, 0.0];
 	// x containedBy [0, 1], z after [0, 1]
 	powRev2 [0.25, 0.5] [2.0, 4.0] [entire] = [-2.0, -0.5];
-	powRev2 [0.25, 0.5] [2.0, infinity] [entire] = [entire];
+	powRev2 [0.25, 0.5] [2.0, infinity] [entire] = [-infinity, -0.5];
 	// x finishes [0, 1], z overlaps/starts [0, 1]
 	powRev2 [0.25, 1.0] [0.0, 0.5] [entire] = [0.5, infinity];
 	powRev2 [1.0, 1.0] [0.0, 0.5] [entire] = [empty];
@@ -639,7 +639,7 @@ testcase minimal.powRev2_test {
 	// x finishes [0, 1], z after [0, 1]
 	powRev2 [0.25, 1.0] [2.0, 4.0] [entire] = [-infinity, -0.5];
 	powRev2 [1.0, 1.0] [2.0, 4.0] [entire] = [empty];
-	powRev2 [0.25, 1.0] [2.0, infinity] [entire] = [-infinity, 0.0];
+	powRev2 [0.25, 1.0] [2.0, infinity] [entire] = [-infinity, -0.5];
 	powRev2 [1.0, 1.0] [2.0, infinity] [entire] = [empty];
 	// x equals/finishedBy [0, 1], z overlaps/starts [0, 1]
 	powRev2 [0.0, 1.0] [0.0, 0.5] [entire] = [0.0, infinity];
